@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공주 퇴근시간</title>
+  <style>
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      /* font-family: 'PyeongChangPeace-Bold'; */
+      font-family: 'UhBeeJJIBBABBA';
+      vertical-align: baseline;
+    }
+
+    /* HTML5 display-role reset for older browsers */
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    blockquote,
+    q {
+      quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    @font-face {
+      font-family: 'PyeongChangPeace-Bold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'UhBeeJJIBBABBA';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeJJIBBABBA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ---------------------------------------------------- */
+
+    .wrap {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 10%;
+      /* background: url(/img/frame.png) no-repeat top/contain; */
+      /* background-color: pink; */
+    }
+
+
+    #text {
+      position: relative;
+      font-size: 2.08vw;
+    }
+
+    .wrap img {
+      width: 29vw;
+      height: 27vw;
+      position: absolute;
+      top: -90%;
+      left: 0;
+      transform: translateY(-90%);
+      z-index: -1;
+    }
+
+    #timer {
+      font-size: 5.20vw;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <p id="text">공주 퇴근까지
+      <img src="/img/prince.jfif" alt="공주">
+
+    </p>
+    <p id="timer"></p>
+  </div>
+
+  <script>
+    let countdown = function (due) {
+      let now = new Date();
+
+      let rest = due.getTime() - now.getTime();
+      let sec = Math.floor(rest / 1000 % 60);
+      let min = Math.floor(rest / 1000 / 60) % 60;
+      let hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+
+      let count = [hours, min, sec];
+      return count;
+    };
+
+    let goal = new Date();
+    goal.setHours(17);
+    goal.setMinutes(59);
+    goal.setSeconds(59);
+
+    let timer = function () {
+      console.log(countdown(goal));
+      let counter = countdown(goal);
+      let time = `${counter[0]} 시간 ${counter[1]} 분 ${counter[2]} 초`
+
+      document.querySelector('#timer').textContent = time;
+
+    };
+
+    setTimeout(timer);
+    setInterval(timer, 1000);
+
+  </script>
+
+</body>
+
+</html>
